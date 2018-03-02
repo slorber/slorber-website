@@ -1,20 +1,28 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import Link from 'gatsby-link'
+import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 
-// Components
-import Link from "gatsby-link";
+const styles = StyleSheet.create({
+  box: { padding: 10, margin: 10, borderWidth: 1, borderColor: "black" },
+  text: { fontWeight: 'bold', color: "red" },
+  button: {
+    marginVertical: 40, paddingVertical: 20, paddingHorizontal: 10,
+    borderWidth: 1, borderColor: "black", backgroundColor: "lightgrey", alignItems: "center"
+  },
+  buttonText: { fontWeight: 'bold', color: "black" },
+});
 
-const Tag = ({pathContext, data}) => {
-  const {tagSlug} = pathContext;
+const HomePage = ({pathContext, data}) => {
   const {edges} = data.allContentfulBlogPost;
   const totalCount = edges.length;
-  const tagHeader = `${totalCount} post${
-    totalCount === 1 ? "" : "s"
-    } tagged with "${tagSlug}"`;
+
+  const header = `${totalCount} post${totalCount === 1 ? "" : "s"}`;
 
   return (
-    <div>
-      <h1>{tagHeader}</h1>
+    <View style={styles.box}>
+
+      <Text style={styles.text}>{header}</Text>
+
       <ul>
         {edges.map(({node}) => {
           const {id, slug, title, summary} = node;
@@ -28,28 +36,32 @@ const Tag = ({pathContext, data}) => {
           );
         })}
       </ul>
+
       <Link to="/tags">All tags</Link>
-    </div>
+
+      <TouchableOpacity style={styles.button} onPress={() => alert("it works")}>
+        <Text style={styles.buttonText}>Button</Text>
+      </TouchableOpacity>
+
+    </View>
   );
 };
 
+export default HomePage
 
-export default Tag;
+
 
 export const pageQuery = graphql`
-    query TagPage($tagSlug: String!) {
+    query HomePage($locale: String) {
         allContentfulBlogPost(
-            limit: 2000,
+            filter: {
+                node_locale: {
+                    eq: $locale
+                }
+            },
             sort: {
                 fields: [createdAt],
-                order: DESC,
-            }
-            filter: {
-                tags: {
-                    slug: {
-                        eq: $tagSlug
-                    }
-                }
+                order: DESC
             }
         ) {
             edges {
@@ -64,6 +76,7 @@ export const pageQuery = graphql`
                     content {
                         __typename
                         ... on ContentfulBlogPostText {
+                            id
                             text {
                                 id
                                 text
@@ -77,6 +90,11 @@ export const pageQuery = graphql`
                                 javascript
                             }
                         }
+                    }
+                    tags {
+                        id
+                        name
+                        slug
                     }
                 }
             }

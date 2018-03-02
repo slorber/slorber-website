@@ -42,6 +42,29 @@ exports.onCreatePage = ({page}) => {
 };
 
 
+
+
+const createHomePages = ({graphql, boundActionCreators: {createPage}}) => {
+  const homeTemplate = path.resolve("src/templates/home.js");
+  return new Promise(resolve => {
+    createPage({
+      path: `/`,
+      component: homeTemplate,
+      context: {
+        locale: "en",
+      },
+    });
+    createPage({
+      path: `/fr`,
+      component: homeTemplate,
+      context: {
+        locale: "fr",
+      },
+    });
+    resolve();
+  });
+};
+
 const createTagPages = ({graphql, boundActionCreators: {createPage}}) => {
   const tagTemplate = path.resolve("src/templates/tag.js");
   return graphql(getAllTagsQuery).then(result => {
@@ -99,6 +122,7 @@ const createBlogPostsPages = ({graphql, boundActionCreators: {createPage}}) => {
 
 exports.createPages = (...args) => {
   return Promise.all([
+    createHomePages(...args),
     createTagPages(...args),
     createTagsPage(...args),
     createBlogPostsPages(...args),
