@@ -6,6 +6,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-react-next',
     'gatsby-plugin-react-native-web',
+    'gatsby-plugin-netlify',
     {
       resolve: `gatsby-source-contentful`,
       options: {
