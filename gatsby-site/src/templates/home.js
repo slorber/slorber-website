@@ -12,36 +12,63 @@ const styles = StyleSheet.create({
   buttonText: { fontWeight: 'bold', color: "black" },
 });
 
+
+const BlogPosts = ({blogPosts}) => {
+  return (
+    <ul>
+      {blogPosts.map(blogPost => {
+        const {id, slug, title, summary} = blogPost;
+        return (
+          <li key={id}>
+            <Link to={`/posts/${slug}`}>{title}</Link>
+            <div>
+              {summary.summary}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
+const Block = ({children}) => (
+  <View
+    style={{
+      width: "100%",
+      height: "100vh",
+      border: "solid",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    {children}
+  </View>
+);
+
 const HomePage = ({pathContext, data}) => {
-  const {edges} = data.allContentfulBlogPost;
-  const totalCount = edges.length;
+  const blogPosts = data.allContentfulBlogPost.edges.map(e => e.node);
+  const totalCount = blogPosts.length;
 
   const header = `${totalCount} post${totalCount === 1 ? "" : "s"}`;
 
   return (
-    <View style={styles.box}>
+    <View>
 
-      <Text style={styles.text}>{header}</Text>
 
-      <ul>
-        {edges.map(({node}) => {
-          const {id, slug, title, summary} = node;
-          return (
-            <li key={id}>
-              <Link to={`/posts/${slug}`}>{title}</Link>
-              <div>
-                {summary.summary}
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      <Block>
+        <Text>Hey</Text>
+      </Block>
+
+      <Block>
+        <Text>Ho</Text>
+      </Block>
+
+      <Text style={{ fontWeight: 'bold', color: "red" }}>{header}</Text>
+
+
+      <BlogPosts blogPosts={blogPosts}/>
 
       <Link to="/tags">All tags</Link>
-
-      <TouchableOpacity style={styles.button} onPress={() => alert("it works")}>
-        <Text style={styles.buttonText}>Button</Text>
-      </TouchableOpacity>
 
     </View>
   );
@@ -101,3 +128,4 @@ export const pageQuery = graphql`
         }
     }
 `;
+
