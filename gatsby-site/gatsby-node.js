@@ -1,47 +1,52 @@
+const generateBabelConfig = require("gatsby/dist/utils/babel-config");
 const path = require("path");
 const slug = require("slug");
+const webpack = require('webpack');
 
+// Hack for:
+// https://stackoverflow.com/questions/49347775/how-to-share-graphql-fragments-between-node-and-gatsby-pages
+// https://twitter.com/sseraphini/status/975347293179301888
+const graphql = ([str]) => str;
 
-const getAllTagsQuery = `
-query {  
-  allContentfulBlogPostTag {
-    edges {
-      node {
-        id
-        slug
-        name
-        description {
-          description
+const getAllTagsQuery = graphql`
+    query getAllTagsQuery {
+        allContentfulBlogPostTag {
+            edges {
+                node {
+                    id
+                    slug
+                    name
+                    description {
+                        description
+                    }
+                }
+            }
         }
-      }
-    } 
-  }
-}
+    }
 `;
 
-const getAllBlogPostsQuery = `
-query {
-  allContentfulBlogPost {
-    edges {
-      node {
-        id
-        slug
-        title
-        summary {
-          id
-          summary
+
+const getAllBlogPostsQuery = graphql`
+    query getAllBlogPostsQuery {
+        allContentfulBlogPost {
+            edges {
+                node {
+                    id
+                    slug
+                    title
+                    summary {
+                        id
+                        summary
+                    }
+                }
+            }
         }
-      }
     }
-  }
-}
 `;
 
 exports.onCreatePage = ({page}) => {
   console.log("page created: " + page.path);
 };
-
-
 
 
 const createHomePages = ({graphql, boundActionCreators: {createPage}}) => {
