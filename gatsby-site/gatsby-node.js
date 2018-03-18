@@ -1,7 +1,5 @@
-const generateBabelConfig = require("gatsby/dist/utils/babel-config");
 const path = require("path");
 const slug = require("slug");
-const webpack = require('webpack');
 
 // Hack for:
 // https://stackoverflow.com/questions/49347775/how-to-share-graphql-fragments-between-node-and-gatsby-pages
