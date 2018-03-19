@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Gatsby Default Starter',
+    siteUrl: `https://sebastienlorber.com`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -14,5 +15,8 @@ module.exports = {
         accessToken: `90fda85e11add259a5cededc7fc023069128b13633957c2ad26e203a4161e991`,
       },
     },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+    }
   ],
 };
