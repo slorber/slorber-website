@@ -4,6 +4,7 @@ module.exports = {
     siteUrl: `https://sebastienlorber.com`,
   },
   plugins: [
+    'gatsby-plugin-resolve-src',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-react-next',
     'gatsby-plugin-react-native-web',

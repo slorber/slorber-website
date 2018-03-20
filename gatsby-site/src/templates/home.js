@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import AppText from "components/AppText";
 
 const styles = StyleSheet.create({
   box: { padding: 10, margin: 10, borderWidth: 1, borderColor: "black" },
@@ -56,14 +57,14 @@ const HomePage = ({pathContext, data}) => {
 
 
       <Block>
-        <Text>Hey</Text>
+        <AppText>Hey</AppText>
       </Block>
 
       <Block>
-        <Text>Ho</Text>
+        <AppText>Ho</AppText>
       </Block>
 
-      <Text style={{ fontWeight: 'bold', color: "red" }}>{header}</Text>
+      <AppText style={{ fontWeight: 'bold', color: "red" }}>{header}</AppText>
 
 
       <BlogPosts blogPosts={blogPosts}/>
