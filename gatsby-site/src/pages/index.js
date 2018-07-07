@@ -64,14 +64,14 @@ const SvgPattern5 = props => (
 );
 
 
-const blocks = [
+const sections = [
   {
     color: "#bbdefb",
     colorDark: "#8aacc8",
     colorLight: "#eeffff",
     svgComponent: SvgPattern1,
     children: (
-      <div>content</div>
+      <div>coucou je suis Sébastien</div>
     )
   },
   {
@@ -80,7 +80,7 @@ const blocks = [
     colorLight: "#fff1ff",
     svgComponent: SvgPattern2,
     children: (
-      <div>content</div>
+      <div>Je suis développeur React</div>
     )
   },
   {
@@ -89,7 +89,7 @@ const blocks = [
     colorLight: "#ffeb9c",
     svgComponent: SvgPattern3,
     children: (
-      <div>content</div>
+      <div>J'aime les hamburgers</div>
     )
   },
   {
@@ -98,7 +98,7 @@ const blocks = [
     colorLight: "#b2fef7",
     svgComponent: SvgPattern4,
     children: (
-      <div>content</div>
+      <div>Il fait chaud</div>
     )
   },
   {
@@ -107,20 +107,41 @@ const blocks = [
     colorLight: "#b2fab4",
     svgComponent: SvgPattern5,
     children: (
-      <div>content</div>
+      <div>Chichouuu</div>
     )
   }
 ];
 
+const Card = ({ style, ...props }) => (
+  <div style={{
+    padding: 20,
+    backgroundColor: "white",
+    boxShadow: "10px 10px rgba(0,0,0,0.20)",
+    ...style
+  }}
+       {...props}
+  />
+);
+const Centered = ({ style, ...props }) => (
+  <div style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    ...style
+  }}
+       {...props}
+  />
+);
 
-const Block = ({
-                 svgComponent,
-                 color,
-                 colorDark,
-                 colorLight,
-                 children
 
-               }) => {
+const Section = ({
+                   svgComponent,
+                   color,
+                   colorDark,
+                   colorLight,
+                   children
+
+                 }) => {
   const SvgComponent = svgComponent;
   return (
     <div
@@ -140,7 +161,7 @@ const Block = ({
           width: "100%",
           height: "100%",
           zIndex: 0,
-          backgroundColor: color,
+          backgroundColor: color
         }}
       >
         <SvgComponent color={colorDark}/>
@@ -155,19 +176,57 @@ const Block = ({
           zIndex: 1
         }}
       >
-        {children}
+        <Centered
+          style={{
+            width: "100%",
+            height: "100%",
+            paddingLeft: 500,
+          }}
+        >
+          <Card
+            style={{
+              width: "70%",
+              height: 400,
+            }}
+          >
+            {children}
+          </Card>
+        </Centered>
       </div>
     </div>
   );
 };
 
+const Sidebar = () => (
+  <Centered
+    style={{
+      position: "fixed",
+      top: 0,
+      width: 500,
+      height: "100vh"
+    }}
+  >
+
+    <Card
+      style={{
+        width: 300,
+        height: 600
+      }}
+    >
+      <h1>Hey I'm Sebastien!</h1>
+    </Card>
+
+  </Centered>
+);
+
 const HomePage = ({ pathContext, data }) => {
   return (
-    <div>
-      {blocks.map((block, i) => (
-        <Block key={i} {...block}/>
+    <React.Fragment>
+      {sections.map((section, i) => (
+        <Section key={i} {...section}/>
       ))}
-    </div>
+      <Sidebar/>
+    </React.Fragment>
   );
 };
 
