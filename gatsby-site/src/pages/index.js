@@ -205,6 +205,7 @@ const Section = ({
           css={{
             width: "100%",
             height: "100%",
+            minHeight: "100vh",
             [IsLarge]: {
               paddingLeft: "30vw"
             }
@@ -248,7 +249,8 @@ const ProfileCard = ({ className, ...props }) => (
           width: 120,
           height: 120,
           borderRadius: 120,
-          boxShadow: "-2px 4px 6px -1px rgba(0,0,0,0.4)"
+          //boxShadow: "-2px 4px 6px -1px rgba(0,0,0,0.4)",
+          boxShadow: "0 4px 5px #a1a1a1",
         }}
         src={"https://pbs.twimg.com/profile_images/573206276819140608/gKAusMeX_400x400.jpeg"}
       />
@@ -264,7 +266,7 @@ const ProfileCard = ({ className, ...props }) => (
       textAlign: "center",
       marginTop: 30,
     }}>
-      <span>I'm a freelance full-stack developer, specialized in React ecosystem since 2014.</span>
+      <p>I'm a freelance full-stack developer from Paris, specialized in React ecosystem since 2014, working remotely on interesting projects</p>
     </Centered>
     <Centered css={{
       width: "100%",
@@ -273,7 +275,7 @@ const ProfileCard = ({ className, ...props }) => (
       <ProfileSocialIcon url="https://github.com/slorber" color="#24292e"/>
       <ProfileSocialIcon url="https://twitter.com/sebastienlorber"/>
       <ProfileSocialIcon url="https://www.linkedin.com/in/sebastienlorber/"/>
-      <ProfileSocialIcon url="mailto:lorber.sebastien@gmail.com"/>
+      <ProfileSocialIcon url="mailto:lorber.sebastien@gmail.com" color="#c71610"/>
     </Centered>
     <Centered css={{
       width: "100%",
@@ -288,6 +290,7 @@ const ProfileCard = ({ className, ...props }) => (
 const StackOverflowFlair = () => (
   <a
     href="https://stackoverflow.com/users/82609/sebastien-lorber"
+    target="_blank"
     css={{
       position: "relative",
       overflow: "hidden"
@@ -299,7 +302,7 @@ const StackOverflowFlair = () => (
         height: 58,
         position: "relative"
       }}
-      src="https://stackoverflow.com/users/flair/82609.png"
+      src="https://stackoverflow.com/users/flair/82609.png?theme=dark"
       alt="profile for Sebastien Lorber at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
       title="profile for Sebastien Lorber at Stack Overflow, Q&amp;A for professional and enthusiast programmers"/>
   </a>
