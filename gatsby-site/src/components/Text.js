@@ -2,9 +2,9 @@ import "typeface-roboto";
 import React from "react";
 
 
-const AppText = props => (
+const Text = props => (
   <span
     {...props}
   />
 );
-export default AppText;
+export default Text;

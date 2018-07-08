@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "gatsby-link";
-import AppText from "components/AppText";
+import Text from "components/Text";
+import { SocialIcon } from "react-social-icons";
+
 
 const Breakpoint = 1000;
 
@@ -187,12 +189,14 @@ const Section = ({
         }}
       >
         {index === 0 && (
-          <div css={{
-            padding: 40,
-            [IsLarge]: {
-              display: "none",
-            }
-          }}
+          <div
+            css={{
+              padding: 40,
+              paddingTop: 70,
+              [IsLarge]: {
+                display: "none"
+              }
+            }}
           >
             <ProfileCard/>
           </div>
@@ -223,17 +227,97 @@ const Section = ({
 
 const ProfileCard = ({ className, ...props }) => (
   <Card
+    css={{
+      position: "relative",
+      padding: 30,
+      paddingTop: 60,
+    }}
     {...props}
     className={className}
   >
-    <h1>Hey I'm Sebastien!</h1>
+    <Centered
+      css={{
+        position: "absolute",
+        top: -60,
+        right: 0,
+        width: "100%"
+      }}
+    >
+      <img
+        css={{
+          width: 120,
+          height: 120,
+          borderRadius: 120,
+          boxShadow: "-2px 4px 6px -1px rgba(0,0,0,0.4)"
+        }}
+        src={"https://pbs.twimg.com/profile_images/573206276819140608/gKAusMeX_400x400.jpeg"}
+      />
+    </Centered>
+    <Centered css={{
+      width: "100%",
+      textAlign: "center"
+    }}>
+      <h1>I'm Sebastien!</h1>
+    </Centered>
+    <Centered css={{
+      width: "100%",
+      textAlign: "center",
+      marginTop: 30,
+    }}>
+      <span>I'm a freelance full-stack developer, specialized in React ecosystem since 2014.</span>
+    </Centered>
+    <Centered css={{
+      width: "100%",
+      marginTop: 30,
+    }}>
+      <ProfileSocialIcon url="https://github.com/slorber" color="#24292e"/>
+      <ProfileSocialIcon url="https://twitter.com/sebastienlorber"/>
+      <ProfileSocialIcon url="https://www.linkedin.com/in/sebastienlorber/"/>
+      <ProfileSocialIcon url="mailto:lorber.sebastien@gmail.com"/>
+    </Centered>
+    <Centered css={{
+      width: "100%",
+      marginTop: 30,
+    }}
+    >
+      <StackOverflowFlair/>
+    </Centered>
   </Card>
+);
+
+const StackOverflowFlair = () => (
+  <a
+    href="https://stackoverflow.com/users/82609/sebastien-lorber"
+    css={{
+      position: "relative",
+      overflow: "hidden"
+    }}
+  >
+    <img
+      css={{
+        width: 208,
+        height: 58,
+        position: "relative"
+      }}
+      src="https://stackoverflow.com/users/flair/82609.png"
+      alt="profile for Sebastien Lorber at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
+      title="profile for Sebastien Lorber at Stack Overflow, Q&amp;A for professional and enthusiast programmers"/>
+  </a>
+);
+
+const ProfileSocialIcon = ({ url, color }) => (
+  <div
+    css={{ padding: 5 }}
+  >
+    <SocialIcon url={url} color={color}/>
+  </div>
 );
 
 const LargeSidebar = () => (
   <Centered
     css={{
       position: "fixed",
+      zIndex: 1,
       top: 0,
       width: "30vw",
       height: "100vh",
@@ -244,8 +328,7 @@ const LargeSidebar = () => (
   >
     <ProfileCard
       css={{
-        width: 300,
-        height: 600,
+        width: 350,
         maxHeight: "80vh",
         maxWidth: "25vw"
       }}
