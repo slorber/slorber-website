@@ -2,6 +2,7 @@ import React from "react";
 import Link from "gatsby-link";
 import Text from "components/Text";
 import { SocialIcon } from "react-social-icons";
+import { DefaultMountUnmountAnimation } from "utils/Animations";
 
 
 const Breakpoint = 1000;
@@ -198,7 +199,10 @@ const Section = ({
               }
             }}
           >
-            <ProfileCard/>
+            <DefaultMountUnmountAnimation>
+
+              <ProfileCard/>
+            </DefaultMountUnmountAnimation>
           </div>
         )}
         <Centered
@@ -211,15 +215,17 @@ const Section = ({
             }
           }}
         >
-          <Card
-            css={{
-              width: "70%",
-              height: 400,
-              margin: 40
-            }}
-          >
-            {children}
-          </Card>
+          <DefaultMountUnmountAnimation css={{width: "70%",}}>
+            <Card
+              css={{
+                width: "100%",
+                minHeight: 300,
+                margin: 40,
+              }}
+            >
+              {children}
+            </Card>
+          </DefaultMountUnmountAnimation>
         </Centered>
       </div>
     </div>
@@ -231,7 +237,7 @@ const ProfileCard = ({ className, ...props }) => (
     css={{
       position: "relative",
       padding: 30,
-      paddingTop: 80,
+      paddingTop: 80
     }}
     {...props}
     className={className}
@@ -250,7 +256,7 @@ const ProfileCard = ({ className, ...props }) => (
           height: 120,
           borderRadius: 120,
           //boxShadow: "-2px 4px 6px -1px rgba(0,0,0,0.4)",
-          boxShadow: "0 4px 5px #a1a1a1",
+          boxShadow: "0 4px 5px #a1a1a1"
         }}
         src={"https://pbs.twimg.com/profile_images/573206276819140608/gKAusMeX_400x400.jpeg"}
       />
@@ -264,15 +270,16 @@ const ProfileCard = ({ className, ...props }) => (
     <Centered css={{
       width: "100%",
       textAlign: "center",
-      marginTop: 30,
+      marginTop: 30
     }}>
-      <p>I'm a freelance full-stack developer from Paris, specialized in React ecosystem since 2014, working remotely on interesting projects</p>
+      <p>I'm a freelance full-stack developer from Paris, specialized in React ecosystem since 2014, working remotely on
+        interesting projects</p>
     </Centered>
     <Centered css={{
       width: "100%",
       marginTop: 30,
-      ['@media (max-height: 520px)']: {
-        display: "none",
+      ["@media (max-height: 520px)"]: {
+        display: "none"
       }
     }}>
       <ProfileSocialIcon url="https://github.com/slorber" color="#24292e"/>
@@ -283,8 +290,8 @@ const ProfileCard = ({ className, ...props }) => (
     <Centered css={{
       width: "100%",
       marginTop: 30,
-      ['@media (max-height: 660px)']: {
-        display: "none",
+      ["@media (max-height: 660px)"]: {
+        display: "none"
       }
     }}
     >
@@ -335,13 +342,15 @@ const LargeSidebar = () => (
       }
     }}
   >
-    <ProfileCard
-      css={{
-        width: 350,
-        maxHeight: "75vh",
-        maxWidth: "25vw"
-      }}
-    />
+    <DefaultMountUnmountAnimation>
+      <ProfileCard
+        css={{
+          width: 350,
+          maxHeight: "75vh",
+          maxWidth: "25vw"
+        }}
+      />
+    </DefaultMountUnmountAnimation>
   </Centered>
 );
 
