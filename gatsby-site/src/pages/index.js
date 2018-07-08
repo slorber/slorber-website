@@ -2,16 +2,21 @@ import React from "react";
 import Link from "gatsby-link";
 import AppText from "components/AppText";
 
+const Breakpoint = 1000;
 
-const SvgPattern = ({ id, size = 30, width, height, color, children, style, ...props }) => (
+const IsSmall = `@media (max-width: ${Breakpoint - 1}px)`;
+const IsLarge = `@media (min-width: ${Breakpoint}px)`;
+
+
+const SvgPattern = ({ id, size = 30, width, height, color, children, css, ...props }) => (
   <svg
     {...props}
-    style={{
+    css={{
       width: "100%",
       height: "100%",
       fill: color,
       opacity: 0.3,
-      ...style
+      ...css
     }}
   >
     <defs>
@@ -115,49 +120,51 @@ const sections = [
   }
 ];
 
-const Card = ({ style, ...props }) => (
-  <div style={{
-    padding: 20,
-    backgroundColor: "white",
-    boxShadow: "10px 10px rgba(0,0,0,0.20)",
-    ...style
-  }}
-       {...props}
+const Card = ({ className, ...props }) => (
+  <div
+    css={{
+      padding: 20,
+      backgroundColor: "white",
+      boxShadow: "10px 10px rgba(0,0,0,0.20)"
+    }}
+    {...props}
+    className={className}
   />
 );
-const Centered = ({ style, ...props }) => (
-  <div style={{
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    ...style
-  }}
-       {...props}
+const Centered = ({ className, ...props }) => (
+  <div
+    css={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }}
+    {...props}
+    className={className}
   />
 );
 
 
 const Section = ({
+                   index,
                    svgComponent,
                    color,
                    colorDark,
                    colorLight,
                    children
-
                  }) => {
   const SvgComponent = svgComponent;
   return (
     <div
-      style={{
+      css={{
         position: "relative",
-        width: "100vw",
+        width: "100%",
         minHeight: "100vh",
         alignItems: "center",
         justifyContent: "center"
       }}
     >
       <div
-        style={{
+        css={{
           position: "absolute",
           top: 0,
           right: 0,
@@ -170,8 +177,8 @@ const Section = ({
         <SvgComponent color={colorDark}/>
       </div>
       <div
-        style={{
-          position: "absolute",
+        css={{
+          position: "relative",
           top: 0,
           right: 0,
           width: "100%",
@@ -179,17 +186,31 @@ const Section = ({
           zIndex: 1
         }}
       >
+        {index === 0 && (
+          <div css={{
+            padding: 40,
+            [IsLarge]: {
+              display: "none",
+            }
+          }}
+          >
+            <ProfileCard/>
+          </div>
+        )}
         <Centered
-          style={{
+          css={{
             width: "100%",
             height: "100%",
-            paddingLeft: 500
+            [IsLarge]: {
+              paddingLeft: "30vw"
+            }
           }}
         >
           <Card
-            style={{
+            css={{
               width: "70%",
-              height: 400
+              height: 400,
+              margin: 40
             }}
           >
             {children}
@@ -200,35 +221,45 @@ const Section = ({
   );
 };
 
-const Sidebar = () => (
+const ProfileCard = ({ className, ...props }) => (
+  <Card
+    {...props}
+    className={className}
+  >
+    <h1>Hey I'm Sebastien!</h1>
+  </Card>
+);
+
+const LargeSidebar = () => (
   <Centered
-    style={{
+    css={{
       position: "fixed",
       top: 0,
-      width: 500,
-      height: "100vh"
+      width: "30vw",
+      height: "100vh",
+      [IsSmall]: {
+        display: "none"
+      }
     }}
   >
-
-    <Card
-      style={{
+    <ProfileCard
+      css={{
         width: 300,
-        height: 600
+        height: 600,
+        maxHeight: "80vh",
+        maxWidth: "25vw"
       }}
-    >
-      <h1>Hey I'm Sebastien!</h1>
-    </Card>
-
+    />
   </Centered>
 );
 
 const HomePage = ({ pathContext, data }) => {
   return (
     <React.Fragment>
-      {sections.map((section, i) => (
-        <Section key={i} {...section}/>
+      {sections.map((section, index) => (
+        <Section key={index} index={index} {...section}/>
       ))}
-      <Sidebar/>
+      <LargeSidebar/>
     </React.Fragment>
   );
 };
