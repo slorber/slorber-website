@@ -16,6 +16,12 @@ module.exports = {
       options: {
         // Accepts all options defined by `babel-plugin-emotion` plugin.
       }
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
     }
   ],
 };

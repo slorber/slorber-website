@@ -231,7 +231,7 @@ const ProfileCard = ({ className, ...props }) => (
     css={{
       position: "relative",
       padding: 30,
-      paddingTop: 60,
+      paddingTop: 80,
     }}
     {...props}
     className={className}
@@ -271,6 +271,9 @@ const ProfileCard = ({ className, ...props }) => (
     <Centered css={{
       width: "100%",
       marginTop: 30,
+      ['@media (max-height: 520px)']: {
+        display: "none",
+      }
     }}>
       <ProfileSocialIcon url="https://github.com/slorber" color="#24292e"/>
       <ProfileSocialIcon url="https://twitter.com/sebastienlorber"/>
@@ -280,6 +283,9 @@ const ProfileCard = ({ className, ...props }) => (
     <Centered css={{
       width: "100%",
       marginTop: 30,
+      ['@media (max-height: 660px)']: {
+        display: "none",
+      }
     }}
     >
       <StackOverflowFlair/>
@@ -332,7 +338,7 @@ const LargeSidebar = () => (
     <ProfileCard
       css={{
         width: 350,
-        maxHeight: "80vh",
+        maxHeight: "75vh",
         maxWidth: "25vw"
       }}
     />
