@@ -5,10 +5,21 @@ import { SocialIcon } from "react-social-icons";
 import { DefaultMountUnmountAnimation } from "utils/Animations";
 
 
-const Breakpoint = 1000;
+const WidthBreakpoint = 1000;
+const HeightBreakpoint = 700;
 
-const IsSmall = `@media (max-width: ${Breakpoint - 1}px)`;
-const IsLarge = `@media (min-width: ${Breakpoint}px)`;
+const IsSmall = `@media (max-width: ${WidthBreakpoint - 1}px)`;
+const IsLarge = `@media (min-width: ${WidthBreakpoint}px)`;
+
+const IsSmallHeight = `@media (max-height: ${HeightBreakpoint - 1}px)`;
+const IsLargeHeight = `@media (min-height: ${HeightBreakpoint}px)`;
+
+const responsiveHeightStyle = (small, large) => ({
+  [IsSmallHeight]: small,
+  [IsLargeHeight]: large
+});
+
+const responsiveHeightSpacing = (attribute, small = 15, large = 40) => responsiveHeightStyle({ [attribute]: small }, { [attribute]: large });
 
 
 const SvgPattern = ({ id, size = 30, width, height, color, children, css, ...props }) => (
@@ -73,6 +84,39 @@ const SvgPattern5 = props => (
   </SvgPattern>
 );
 
+const SvgPattern6 = props => (
+  <SvgPattern id="pattern6" width={80} height={80} {...props}>
+    <path
+      fillRule="evenodd"
+      d="M11 0l5 20H6l5-20zm42 31a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM0 72h40v4H0v-4zm0-8h31v4H0v-4zm20-16h20v4H20v-4zM0 56h40v4H0v-4zm63-25a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM53 41a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-30 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-28-8a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zM56 5a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zm-3 46a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM21 0l5 20H16l5-20zm43 64v-4h-4v4h-4v4h4v4h4v-4h4v-4h-4zM36 13h4v4h-4v-4zm4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm8-8h4v4h-4v-4z"
+    />
+  </SvgPattern>
+);
+
+const SvgPattern7 = props => (
+  <SvgPattern id="pattern7" width={42} height={44} {...props}>
+    <path
+      d="M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z"
+      fillRule="evenodd"
+    />
+  </SvgPattern>
+);
+
+const SvgPattern8 = props => (
+  <SvgPattern id="pattern8" width={100} height={100} {...props}>
+    <path
+      d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm48 25a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm-43-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm63 31a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM34 90a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm56-76a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM12 86a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm28-65a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm23-11a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm-6 60a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm29 22a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM32 63a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm57-13a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm-9-21a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM60 91a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM35 41a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM12 60a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"
+      fillRule="evenodd"
+    />
+  </SvgPattern>
+);
+
+const SmallProfileSvgBackground = {
+  color: "#ff7043",
+  colorDark: "#c63f17",
+  colorLight: "#ffa270",
+  svgComponent: SvgPattern6
+};
 
 const sections = [
   {
@@ -98,7 +142,7 @@ const sections = [
     color: "#e1bee7",
     colorDark: "#af8eb5",
     colorLight: "#fff1ff",
-    svgComponent: SvgPattern3,
+    svgComponent: SvgPattern8,
     children: (
       <div>J'aime les hamburgers</div>
     )
@@ -116,7 +160,7 @@ const sections = [
     color: "#e5b96c",
     colorDark: "#b1893f",
     colorLight: "#ffeb9c",
-    svgComponent: SvgPattern5,
+    svgComponent: SvgPattern7,
     children: (
       <div>Chichouuu</div>
     )
@@ -146,15 +190,15 @@ const Centered = ({ className, ...props }) => (
   />
 );
 
-
-const Section = ({
-                   index,
-                   svgComponent,
-                   color,
-                   colorDark,
-                   colorLight,
-                   children
-                 }) => {
+const SvgBackgroundScreen = ({
+                               className,
+                               index,
+                               svgComponent,
+                               color,
+                               colorDark,
+                               colorLight,
+                               children
+                             }) => {
   const SvgComponent = svgComponent;
   return (
     <div
@@ -165,6 +209,7 @@ const Section = ({
         alignItems: "center",
         justifyContent: "center"
       }}
+      className={className}
     >
       <div
         css={{
@@ -189,48 +234,50 @@ const Section = ({
           zIndex: 1
         }}
       >
-        {index === 0 && (
-          <div
-            css={{
-              padding: 40,
-              paddingTop: 70,
-              [IsLarge]: {
-                display: "none"
-              }
-            }}
-          >
-            <DefaultMountUnmountAnimation>
-
-              <ProfileCard/>
-            </DefaultMountUnmountAnimation>
-          </div>
-        )}
-        <Centered
-          css={{
-            width: "100%",
-            height: "100%",
-            minHeight: "100vh",
-            [IsLarge]: {
-              paddingLeft: "30vw"
-            }
-          }}
-        >
-          <DefaultMountUnmountAnimation css={{width: "70%",}}>
-            <Card
-              css={{
-                width: "100%",
-                minHeight: 300,
-                margin: 40,
-              }}
-            >
-              {children}
-            </Card>
-          </DefaultMountUnmountAnimation>
-        </Centered>
+        {children}
       </div>
     </div>
   );
 };
+
+
+const Section = ({
+                   children,
+                   ...props
+                 }) => (
+  <SvgBackgroundScreen
+    {...props}
+  >
+    <Centered
+      css={{
+        width: "100%",
+        height: "100%",
+        minHeight: "100vh",
+        [IsLarge]: {
+          paddingLeft: "30vw"
+        },
+      }}
+    >
+      <DefaultMountUnmountAnimation
+        css={{
+          width: "100%",
+          padding: 40,
+          maxWidth: 700,
+        }}
+      >
+        <Card
+          css={{
+            width: "100%",
+            minHeight: 300,
+          }}
+        >
+          {children}
+        </Card>
+      </DefaultMountUnmountAnimation>
+    </Centered>
+  </SvgBackgroundScreen>
+);
+
 
 const ProfileCard = ({ className, ...props }) => (
   <Card
@@ -270,15 +317,15 @@ const ProfileCard = ({ className, ...props }) => (
     <Centered css={{
       width: "100%",
       textAlign: "center",
-      marginTop: 30
+      ...responsiveHeightSpacing("marginTop")
     }}>
-      <p>I'm a freelance full-stack developer from Paris, specialized in React ecosystem since 2014, working remotely on
-        interesting projects</p>
+      I'm a freelance full-stack developer from Paris, specialized in React ecosystem since 2014, working remotely on
+      interesting projects
     </Centered>
     <Centered css={{
       width: "100%",
-      marginTop: 30,
-      ["@media (max-height: 520px)"]: {
+      ...responsiveHeightSpacing("marginTop"),
+      [`${IsLarge} and (max-height: 500px)`]: {
         display: "none"
       }
     }}>
@@ -289,8 +336,8 @@ const ProfileCard = ({ className, ...props }) => (
     </Centered>
     <Centered css={{
       width: "100%",
-      marginTop: 30,
-      ["@media (max-height: 660px)"]: {
+      ...responsiveHeightSpacing("marginTop"),
+      [`${IsLarge} and (max-height: 550px)`]: {
         display: "none"
       }
     }}
@@ -329,7 +376,7 @@ const ProfileSocialIcon = ({ url, color }) => (
   </div>
 );
 
-const LargeSidebar = () => (
+const LargeSidebarProfile = () => (
   <Centered
     css={{
       position: "fixed",
@@ -346,7 +393,7 @@ const LargeSidebar = () => (
       <ProfileCard
         css={{
           width: 350,
-          maxHeight: "75vh",
+          maxHeight: "78vh",
           maxWidth: "25vw"
         }}
       />
@@ -354,13 +401,45 @@ const LargeSidebar = () => (
   </Centered>
 );
 
+const SmallProfile = () => (
+  <SvgBackgroundScreen
+    {...SmallProfileSvgBackground}
+    css={{
+      [IsLarge]: {
+        display: "none"
+      }
+    }}
+  >
+    <Centered
+      css={{
+        width: "100%",
+        height: "100%",
+        minHeight: "100vh"
+      }}
+    >
+      <div
+        css={{
+          maxWidth: 700,
+          paddingTop: 80,
+          paddingBottom: 80,
+          paddingRight: 30,
+          paddingLeft: 30
+        }}
+      >
+        <ProfileCard/>
+      </div>
+    </Centered>
+  </SvgBackgroundScreen>
+);
+
 const HomePage = ({ pathContext, data }) => {
   return (
     <React.Fragment>
+      <SmallProfile/>
       {sections.map((section, index) => (
         <Section key={index} index={index} {...section}/>
       ))}
-      <LargeSidebar/>
+      <LargeSidebarProfile/>
     </React.Fragment>
   );
 };

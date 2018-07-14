@@ -3,7 +3,7 @@ import React from "react";
 import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import { injectGlobal } from "emotion";
 
-const transitionDefaultDuration = 300;
+const transitionDefaultDuration = 400;
 
 const transitionName = "default-mount-animation";
 
