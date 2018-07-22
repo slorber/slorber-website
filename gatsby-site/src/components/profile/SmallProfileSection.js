@@ -1,13 +1,13 @@
 import React from "react";
 import { IsLarge } from 'constants/mediaQueries';
 import Centered from 'components/Centered';
-import { SmallProfileSvgBackground } from 'data/homeData';
+import { HomeSmallProfileSection } from 'data/homeData';
 import SvgBackground from 'components/svgBackground/SvgBackground';
 import ProfileCard from 'components/profile/ProfileCard';
 
 const SmallProfileSection = ({className,...props}) => (
   <SvgBackground
-    {...SmallProfileSvgBackground}
+    {...HomeSmallProfileSection}
     css={{
       [IsLarge]: {
         display: "none"

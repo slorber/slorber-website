@@ -3,7 +3,7 @@ import { SvgPattern1, SvgPattern2, SvgPattern4, SvgPattern6, SvgPattern7, SvgPat
 import createId from 'utils/createId';
 
 
-export const SmallProfileSvgBackground = {
+export const HomeSmallProfileSection = {
   color: "#ff7043",
   colorDark: "#c63f17",
   colorLight: "#ffa270",
