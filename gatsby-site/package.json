@@ -34,6 +34,7 @@
     "typeface-roboto": "^0.0.54",
     "typography": "^0.16.17",
     "typography-theme-kirkham": "^0.16.3",
+    "uuid": "^3.3.2",
     "yarn": "^1.6.0"
   },
   "keywords": [
@@ -49,6 +50,6 @@
   },
   "devDependencies": {
     "babel-plugin-react-native-web": "^0.5.1",
-    "prettier": "^1.10.2"
+    "prettier": "^1.13.7"
   }
 }
