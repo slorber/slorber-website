@@ -1,6 +1,6 @@
 import React from "react";
 import { DefaultMountUnmountAnimation } from "utils/Animations";
-import Centered from 'components/Centered';
+import Centered from 'components/layout/Centered';
 import { IsLarge } from 'constants/mediaQueries';
 import Card from 'components/Card';
 import SvgBackground from 'components/svgBackground/SvgBackground';

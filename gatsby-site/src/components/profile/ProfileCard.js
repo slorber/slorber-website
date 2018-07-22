@@ -1,10 +1,20 @@
 import React from "react";
 import { SocialIcon } from "react-social-icons";
-import Centered from 'components/Centered';
+import Centered from 'components/layout/Centered';
 import Card from 'components/Card';
 import { IsLarge, responsiveHeightSpacing } from 'constants/mediaQueries';
+import { ProfileContent } from 'data/homeData';
+import Row from 'components/layout/Row';
 
 const StackOverflowFlair = () => (
+  <Centered css={{
+    width: "100%",
+    ...responsiveHeightSpacing("marginTop"),
+    [`${IsLarge} and (max-height: 550px)`]: {
+      display: "none"
+    }
+  }}
+  >
   <a
     href="https://stackoverflow.com/users/82609/sebastien-lorber"
     target="_blank"
@@ -23,6 +33,7 @@ const StackOverflowFlair = () => (
       alt="profile for Sebastien Lorber at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
       title="profile for Sebastien Lorber at Stack Overflow, Q&amp;A for professional and enthusiast programmers"/>
   </a>
+  </Centered>
 );
 
 const ProfileSocialIcon = ({ url, color }) => (
@@ -33,8 +44,24 @@ const ProfileSocialIcon = ({ url, color }) => (
   </div>
 );
 
+const ProfileSocialIcons = () => (
+  <Row css={{
+    width: "100%",
+    justifyContent: 'center',
+    ...responsiveHeightSpacing("marginTop"),
+    [`${IsLarge} and (max-height: 500px)`]: {
+      display: "none"
+    }
+  }}>
+    <ProfileSocialIcon url="https://github.com/slorber" color="#24292e"/>
+    <ProfileSocialIcon url="https://twitter.com/sebastienlorber"/>
+    <ProfileSocialIcon url="https://www.linkedin.com/in/sebastienlorber/"/>
+    <ProfileSocialIcon url="mailto:lorber.sebastien@gmail.com" color="#c71610"/>
+  </Row>
+);
 
-const ProfileCard = ({ className, ...props }) => (
+
+const ProfileCardLayout = ({ className, ...props, children }) => (
   <Card
     css={{
       position: "relative",
@@ -63,43 +90,16 @@ const ProfileCard = ({ className, ...props }) => (
         src={"https://pbs.twimg.com/profile_images/573206276819140608/gKAusMeX_400x400.jpeg"}
       />
     </Centered>
-    <Centered css={{
-      width: "100%",
-      textAlign: "center"
-    }}>
-      <h1>I'm Sebastien!</h1>
-    </Centered>
-    <Centered css={{
-      width: "100%",
-      textAlign: "center",
-      ...responsiveHeightSpacing("marginTop")
-    }}>
-      I'm a freelance full-stack developer from Paris, specialized in React ecosystem since 2014, working remotely on
-      interesting projects
-    </Centered>
-    <Centered css={{
-      width: "100%",
-      ...responsiveHeightSpacing("marginTop"),
-      [`${IsLarge} and (max-height: 500px)`]: {
-        display: "none"
-      }
-    }}>
-      <ProfileSocialIcon url="https://github.com/slorber" color="#24292e"/>
-      <ProfileSocialIcon url="https://twitter.com/sebastienlorber"/>
-      <ProfileSocialIcon url="https://www.linkedin.com/in/sebastienlorber/"/>
-      <ProfileSocialIcon url="mailto:lorber.sebastien@gmail.com" color="#c71610"/>
-    </Centered>
-    <Centered css={{
-      width: "100%",
-      ...responsiveHeightSpacing("marginTop"),
-      [`${IsLarge} and (max-height: 550px)`]: {
-        display: "none"
-      }
-    }}
-    >
-      <StackOverflowFlair/>
-    </Centered>
+    {children}
   </Card>
+);
+
+const ProfileCard = (props) => (
+  <ProfileCardLayout {...props}>
+    <ProfileContent/>
+    <ProfileSocialIcons />
+    <StackOverflowFlair/>
+  </ProfileCardLayout>
 );
 
 export default ProfileCard;

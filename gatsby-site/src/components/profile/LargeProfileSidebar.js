@@ -1,6 +1,6 @@
 import React from "react";
 import { DefaultMountUnmountAnimation } from "utils/Animations";
-import Centered from 'components/Centered';
+import Centered from 'components/layout/Centered';
 import { IsSmall } from 'constants/mediaQueries';
 import ProfileCard from 'components/profile/ProfileCard';
 
