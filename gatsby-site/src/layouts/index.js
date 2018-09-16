@@ -1,25 +1,40 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 
-import { injectGlobal } from 'emotion'
+import { injectGlobal } from 'emotion';
 
 injectGlobal`
   * {
     box-sizing: border-box;
   }
-  body {
+  html, body {
     margin: 0;
+  }
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+  a:hover {
+    text-decoration: underline;
   }
 `;
 
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet
-      title="Gatsby Default Starter"
+      title="Sébastien Lorber - freelance React / ReactNative"
       meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
+        {
+          name: 'description',
+          content:
+            "Sébastien Lorber's website - Fullstack developer specialized in React / ReactNative ",
+        },
+        {
+          name: 'keywords',
+          content:
+            'sebastien lorber, freelance, react, ReactJS, Apollo, graphql, react-native, ReactNative, fullstack, scala, functional programming',
+        },
       ]}
     />
     {children()}
@@ -30,4 +45,4 @@ TemplateWrapper.propTypes = {
   children: PropTypes.func,
 };
 
-export default TemplateWrapper
+export default TemplateWrapper;

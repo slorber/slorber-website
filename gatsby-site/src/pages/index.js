@@ -1,19 +1,7 @@
 import React from 'react';
-import { HomeSections } from 'data/homeData';
-import SmallProfileSection from 'components/profile/SmallProfileSection';
-import LargeProfileSidebar from 'components/profile/LargeProfileSidebar';
-import SvgBackgroundSection from 'components/svgBackground/SvgBackgroundSection';
+import { HomeSections } from 'content/HomeContent';
+import ProfileAndSections from 'components/ProfileAndSections';
 
-const HomePage = ({ pathContext, data }) => {
-  return (
-    <React.Fragment>
-      <SmallProfileSection />
-      {HomeSections.map(section => (
-        <SvgBackgroundSection key={section.id} {...section} />
-      ))}
-      <LargeProfileSidebar />
-    </React.Fragment>
-  );
-};
+const HomePage = () => <ProfileAndSections sections={HomeSections} />;
 
 export default HomePage;

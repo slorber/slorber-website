@@ -1,29 +1,28 @@
-import React from "react";
-import { DefaultMountUnmountAnimation } from "utils/Animations";
+import React from 'react';
+import { DefaultMountUnmountAnimation } from 'utils/Animations';
 import Centered from 'components/layout/Centered';
 import { IsSmall } from 'constants/mediaQueries';
 import ProfileCard from 'components/profile/ProfileCard';
 
-
 const LargeProfileSidebar = () => (
   <Centered
     css={{
-      position: "fixed",
+      position: 'fixed',
       zIndex: 1,
       top: 0,
-      width: "30vw",
-      height: "100vh",
+      width: '33vw',
+      height: '100vh',
       [IsSmall]: {
-        display: "none"
-      }
+        display: 'none',
+      },
     }}
   >
     <DefaultMountUnmountAnimation>
       <ProfileCard
         css={{
           width: 350,
-          maxHeight: "78vh",
-          maxWidth: "25vw"
+          maxHeight: '78vh',
+          maxWidth: '25vw',
         }}
       />
     </DefaultMountUnmountAnimation>

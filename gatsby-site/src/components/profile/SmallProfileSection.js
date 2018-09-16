@@ -1,26 +1,33 @@
-import React from "react";
+import React from 'react';
 import { IsLarge } from 'constants/mediaQueries';
 import Centered from 'components/layout/Centered';
-import { HomeSmallProfileSection } from 'data/homeData';
 import SvgBackground from 'components/svgBackground/SvgBackground';
 import ProfileCard from 'components/profile/ProfileCard';
+import { SvgPattern6 } from 'components/svgBackground/SvgPatterns';
 
-const SmallProfileSection = ({className,...props}) => (
+const SmallProfileSectionBackground = {
+  color: '#ff7043',
+  colorDark: '#c63f17',
+  colorLight: '#ffa270',
+  svgComponent: SvgPattern6,
+};
+
+const SmallProfileSection = ({ className, ...props }) => (
   <SvgBackground
-    {...HomeSmallProfileSection}
+    {...SmallProfileSectionBackground}
     css={{
       [IsLarge]: {
-        display: "none"
-      }
+        display: 'none',
+      },
     }}
     {...props}
     className={className}
   >
     <Centered
       css={{
-        width: "100%",
-        height: "100%",
-        minHeight: "100vh"
+        width: '100%',
+        height: '100%',
+        minHeight: '100vh',
       }}
     >
       <div
@@ -29,10 +36,10 @@ const SmallProfileSection = ({className,...props}) => (
           paddingTop: 80,
           paddingBottom: 80,
           paddingRight: 30,
-          paddingLeft: 30
+          paddingLeft: 30,
         }}
       >
-        <ProfileCard/>
+        <ProfileCard />
       </div>
     </Centered>
   </SvgBackground>
