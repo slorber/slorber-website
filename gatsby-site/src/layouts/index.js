@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 import { injectGlobal } from 'emotion';
+import { fontSizes } from 'components/Text';
 
 injectGlobal`
   * {
@@ -10,6 +11,7 @@ injectGlobal`
   }
   html, body {
     margin: 0;
+    font-size: ${fontSizes.m}px;
   }
   a {
     color: inherit;

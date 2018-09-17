@@ -1,10 +1,10 @@
 import React from 'react';
-import Text, { Bold } from 'components/Text';
+import { Bold } from 'components/Text';
 
 const ExternalLink = ({
   href,
   target = '_blank',
-  color = '#74b9b2',
+  color = '#009cbf',
   children,
   ...props
 }) => (
@@ -16,7 +16,7 @@ const ExternalLink = ({
       color,
     }}
   >
-    <Bold>{children}</Bold>
+    <Bold css={{textDecoration: "inherit"}}>{children}</Bold>
   </a>
 );
 

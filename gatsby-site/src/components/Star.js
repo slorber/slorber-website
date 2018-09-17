@@ -12,11 +12,7 @@ const Star = ({ fill = DefaultFill }) => (
 
 export default Star;
 
-export const Stars = ({
-  count = 0,
-  spacing = 5,
-  fill = DefaultFill,
-}) => (
+export const Stars = ({ count = 0, spacing = 5, fill = DefaultFill }) => (
   <Row
     css={{
       '> * + *': {
@@ -34,9 +30,9 @@ export const Stars = ({
 
 export const StarsRow = ({ count, children }) => (
   <Row css={{ flexWrap: 'wrap' }}>
-    <div css={{ flex: "0 0 130px" }}>
+    <div css={{ flex: '0 0 130px' }}>
       <Stars count={count} />
     </div>
-    <div css={{ flex: "1 0  200px"}}>{children}</div>
+    <div css={{ flex: '1 0  200px' }}>{children}</div>
   </Row>
 );
