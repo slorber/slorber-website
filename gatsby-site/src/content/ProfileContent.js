@@ -13,11 +13,16 @@ const ProfileContent = () => (
     }}
   >
     <Text fontSize="l">
-      I'm{insecableSpace}
-      <Bold>Sébastien</Bold>, a{insecableSpace}
-      <Bold>freelance</Bold>
-      {insecableSpace}developer specialized{insecableSpace}in{insecableSpace}
-      <Bold>React</Bold>
+      <Text noWrap>
+        I'm <Bold>Sébastien</Bold>,{' '}
+      </Text>
+      <Text noWrap>
+        a <Bold>freelance</Bold> developer
+      </Text>
+      <Text noWrap>
+        specialized{insecableSpace}in{insecableSpace}
+        <Bold>React</Bold>
+      </Text>
     </Text>
   </Centered>
 );

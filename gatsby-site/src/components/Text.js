@@ -13,6 +13,7 @@ const extractTextStyle = props => {
     fontSize = 'inherit',
     inline = false,
     bold = false,
+    noWrap = false,
     ...rest
   } = props;
   return {
@@ -22,6 +23,7 @@ const extractTextStyle = props => {
       fontSize: fontSizes[fontSize] ? fontSizes[fontSize] : fontSize,
       fontWeight: bold ? 'bold' : undefined,
       justifyContent: 'center',
+      whiteSpace: noWrap ? true : 'inherit',
     },
   };
 };

@@ -153,11 +153,17 @@ export const HomeSections = [
     svgComponent: SvgPattern8,
     title: "What I'm good at",
     children: (
-      <div css={{"> * + *": { marginTop: 10}}}>
+      <div css={{ '> * + *': { marginTop: 10 } }}>
         <StarsRow count={5}>React</StarsRow>
         <StarsRow count={5}>Redux / Redux-saga</StarsRow>
         <StarsRow count={4}>React Native / Expo</StarsRow>
         <StarsRow count={4}>Apollo / GraphQL</StarsRow>
+        <StarsRow count={4}>Scala / Play2</StarsRow>
+        <StarsRow count={4}>Java 8 / Spring</StarsRow>
+        <StarsRow count={4}>Functional programming</StarsRow>
+        <StarsRow count={3}>Node</StarsRow>
+        <StarsRow count={3}>EventSourcing / CQRS / DDD</StarsRow>
+        <StarsRow count={2}>ReasonML</StarsRow>
       </div>
     ),
   },
