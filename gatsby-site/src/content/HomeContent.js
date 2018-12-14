@@ -10,7 +10,6 @@ import {
 import createId from 'utils/createId';
 import Text, { Bold, fontSizes, H1, H2, Texts } from 'components/Text';
 import ExternalLink from 'components/ExternalLink';
-import Row from 'components/layout/Row';
 import { Stars, StarsRow } from 'components/Star';
 import Spaced from 'components/layout/Spaced';
 
@@ -246,6 +245,7 @@ export const HomeSections = [
       </Spaced>
     ),
   },
+  /*
   {
     id: createId(),
     color: '#e5b96c',
@@ -254,4 +254,5 @@ export const HomeSections = [
     svgComponent: SvgPattern7,
     children: <div></div>,
   },
+  */
 ];
