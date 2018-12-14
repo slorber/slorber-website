@@ -9,6 +9,12 @@ module.exports = {
     'gatsby-plugin-react-next',
     'gatsby-plugin-netlify',
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-131003556-1",
+      },
+    },
+    {
       resolve: `gatsby-plugin-sitemap`,
     },
     {
